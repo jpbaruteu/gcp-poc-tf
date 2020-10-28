@@ -15,7 +15,7 @@ resource "google_cloud_run_service" "default" {
     }
 
     spec {
-      service_account_name = google_service_account.cloudrun_service_account.email
+      service_account_name = "cloudrun@my-test-project-293907.iam.gserviceaccount.com"
 
       containers {
         image = "gcr.io/cloudrun/hello"
@@ -59,11 +59,6 @@ resource "google_cloud_run_service" "default" {
   }
 
   autogenerate_revision_name = true
-
-  depends_on = [
-    google_project_service.run,
-    google_service_account.cloudrun_service_account,
-  ]
 }
 
 resource "google_cloud_run_service_iam_member" "member" {
