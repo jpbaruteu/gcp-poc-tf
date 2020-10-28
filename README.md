@@ -11,7 +11,7 @@ After creating a github project `git_repo` with dev and review branches, you wil
 
 ## Create intiale ressources
 
-First, create GCP généric ressources :
+First, create GCP generic ressources :
 
 ```bash
 git clone https://github.com/jpbaruteu/gcp-poc-tf.git
