@@ -9,6 +9,10 @@ zone = "europe-west2-a"
 
 git_repo = "github_jpbaruteu_gcp-poc"
 
+sql_db_name = "not_used"
+
+environment = "not_used"
+
 sql_user = {
   username = "foobar"
   password = "foobar"
