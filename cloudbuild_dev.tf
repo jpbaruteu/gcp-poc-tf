@@ -47,7 +47,7 @@ resource "google_cloudbuild_trigger" "dev" {
   }
 }
 
-resource "google_project_iam_binding" "cloudbuild_iam" {
+resource "google_project_iam_binding" "cloudbuild_iam_dev" {
   project = var.project_id
   role    = "roles/run.admin"
 
