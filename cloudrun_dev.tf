@@ -66,7 +66,7 @@ resource "google_cloud_run_service" "dev" {
   ]
 }
 
-resource "google_cloud_run_service_iam_member" "member" {
+resource "google_cloud_run_service_iam_member" "member_dev" {
   service  = google_cloud_run_service.dev.name
   location = google_cloud_run_service.dev.location
   role     = "roles/run.invoker"
