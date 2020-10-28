@@ -1,7 +1,7 @@
 # gcp-poc-tf
 
 Project dedicated to TF configuration.  
-This project create GCP ressources for 2 environments '(dev and review):
+This project create GCP ressources for 2 environments (dev and review):
 - Cloud Run
 - Clourd Build
 - Cloud SQL
