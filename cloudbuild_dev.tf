@@ -9,14 +9,14 @@ resource "google_cloudbuild_trigger" "dev" {
   build {
     step {
       name = "gcr.io/cloud-builders/docker"
-      args = ["build", "-t", "gcr.io/${var.project_id}/app:${COMMIT_REF_NAME}_${COMMIT_SHA}", "."]
+      args = ["build", "-t", "gcr.io/${var.project_id}/app:$COMMIT_SHA", "."]
     }
 
     step {
       name = "gcr.io/cloud-builders/docker"
       args = [
         "run",
-        "gcr.io/${var.project_id}/app:${COMMIT_REF_NAME}_${COMMIT_SHA}",
+        "gcr.io/${var.project_id}/app:$COMMIT_SHA",
         "./vendor/bin/phpunit"
       ]
     }
@@ -25,7 +25,7 @@ resource "google_cloudbuild_trigger" "dev" {
       name = "gcr.io/cloud-builders/docker"
       args = [
         "push",
-        "gcr.io/${var.project_id}/app:${COMMIT_REF_NAME}_${COMMIT_SHA}"
+        "gcr.io/${var.project_id}/app:$COMMIT_SHA"
       ]
     }
 
@@ -37,7 +37,7 @@ resource "google_cloudbuild_trigger" "dev" {
         "deploy",
         "${var.project_id}-dev-srv",
         "--image",
-        "gcr.io/${var.project_id}/app:${COMMIT_REF_NAME}_${COMMIT_SHA}",
+        "gcr.io/${var.project_id}/app:$COMMIT_SHA",
         "--region",
         var.region,
         "--platform",
