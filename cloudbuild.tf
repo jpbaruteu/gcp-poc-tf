@@ -9,14 +9,14 @@ resource "google_cloudbuild_trigger" "default" {
   build {
     step {
       name = "gcr.io/cloud-builders/docker"
-      args = ["build", "-t", "gcr.io/${var.project_id}/app:$COMMIT_SHA", "."]
+      args = ["build", "-t", "gcr.io/${var.project_id}/app:${COMMIT_REF_NAME}_${COMMIT_SHA}", "."]
     }
 
     step {
       name = "gcr.io/cloud-builders/docker"
       args = [
         "run",
-        "gcr.io/${var.project_id}/app:$COMMIT_SHA",
+        "gcr.io/${var.project_id}/app:${COMMIT_REF_NAME}_${COMMIT_SHA}",
         "./vendor/bin/phpunit"
       ]
     }
@@ -25,7 +25,7 @@ resource "google_cloudbuild_trigger" "default" {
       name = "gcr.io/cloud-builders/docker"
       args = [
         "push",
-        "gcr.io/${var.project_id}/app:$COMMIT_SHA"
+        "gcr.io/${var.project_id}/app:${COMMIT_REF_NAME}_${COMMIT_SHA}"
       ]
     }
 
@@ -37,7 +37,56 @@ resource "google_cloudbuild_trigger" "default" {
         "deploy",
         "${var.project_id}-${var.environment}-srv",
         "--image",
-        "gcr.io/${var.project_id}/app:$COMMIT_SHA",
+        "gcr.io/${var.project_id}/app:${COMMIT_REF_NAME}_${COMMIT_SHA}",
+        "--region",
+        var.region,
+        "--platform",
+        "managed"
+      ]
+    }
+  }
+}
+
+resource "google_cloudbuild_trigger" "default" {
+  name = "dev"
+  trigger_template {
+    branch_name = "dev"
+    repo_name   = var.git_repo
+    dir         = "app"
+  }
+
+  build {
+    step {
+      name = "gcr.io/cloud-builders/docker"
+      args = ["build", "-t", "gcr.io/${var.project_id}/app:${COMMIT_REF_NAME}_${COMMIT_SHA}", "."]
+    }
+
+    step {
+      name = "gcr.io/cloud-builders/docker"
+      args = [
+        "run",
+        "gcr.io/${var.project_id}/app:${COMMIT_REF_NAME}_${COMMIT_SHA}",
+        "./vendor/bin/phpunit"
+      ]
+    }
+
+    step {
+      name = "gcr.io/cloud-builders/docker"
+      args = [
+        "push",
+        "gcr.io/${var.project_id}/app:${COMMIT_REF_NAME}_${COMMIT_SHA}"
+      ]
+    }
+
+    step {
+      name       = "gcr.io/google.com/cloudsdktool/cloud-sdk"
+      entrypoint = "gcloud"
+      args = [
+        "run",
+        "deploy",
+        "${var.project_id}-dev-srv",
+        "--image",
+        "gcr.io/${var.project_id}/app:${COMMIT_REF_NAME}_${COMMIT_SHA}",
         "--region",
         var.region,
         "--platform",
