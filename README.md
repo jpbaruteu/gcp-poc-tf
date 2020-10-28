@@ -45,3 +45,22 @@ terraform init
 terraform plan -var-file=review.env.tfvars
 terraform apply -var-file=review.env.tfvars
 ```
+
+## Create a new environment
+
+Duplicate dev directory and rename `dev.env.tfvars` into `<env>.env.tfvars`. Update the content :
+
+```
+environment = "<env>"
+```
+
+Deploy <env> into GCP:
+
+```bash
+git clone https://github.com/jpbaruteu/gcp-poc-tf.git
+git checkout test_multi_env
+cd gcp-poc-tf/<env>
+terraform init
+terraform plan -var-file=<env>.env.tfvars
+terraform apply -var-file=<env>.env.tfvars
+```
