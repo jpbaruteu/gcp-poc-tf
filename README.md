@@ -1,6 +1,13 @@
 # gcp-poc-tf
 
-Project dedicated to TF configuration.
+Project dedicated to TF configuration.  
+This project create GCP ressources for 2 environments '(dev and review):
+- Cloud Run
+- Clourd Build
+- Cloud SQL
+- Service account
+
+After creating a github project `git_repo` with dev and review branches, you will be able to automatically trigger a cloud build after each commit and deploy your application on Cloud Run.
 
 ## Create intiale ressources
 
