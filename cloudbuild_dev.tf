@@ -60,7 +60,7 @@ resource "google_project_iam_binding" "cloudbuild_iam_dev" {
   ]
 }
 
-resource "google_project_iam_binding" "cloudbuild_sa" {
+resource "google_project_iam_binding" "cloudbuild_sa_dev" {
   project = var.project_id
   role    = "roles/iam.serviceAccountUser"
 
