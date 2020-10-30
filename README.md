@@ -23,7 +23,7 @@ project_number = "your project number"
 
 First, create GCP Prod env :
 
-```bash
+```shell
 git clone https://github.com/jpbaruteu/gcp-poc-tf.git
 cd gcp-poc-tf/prod
 terraform init
@@ -35,7 +35,7 @@ terraform apply -var-file=prod.env.tfvars
 
 For dev env :
 
-```bash
+```shell
 cd gcp-poc-tf/dev
 terraform init
 terraform plan -var-file=dev.env.tfvars
@@ -44,7 +44,7 @@ terraform apply -var-file=dev.env.tfvars
 
 For review env :
 
-```bash
+```shell
 cd gcp-poc-tf/review
 terraform init
 terraform plan -var-file=review.env.tfvars
@@ -69,13 +69,13 @@ Each commit on a branch automatically trigger a build and deploy application on 
 
 Duplicate dev directory and rename `dev.env.tfvars` into `<env>.env.tfvars`. Update the content :
 
-```
+```shell
 environment = "<env>"
 ```
 
 Deploy <env> into GCP:
 
-```bash
+```shell
 git clone https://github.com/jpbaruteu/gcp-poc-tf.git
 cd gcp-poc-tf/<env>
 terraform init
