@@ -1,3 +1,4 @@
+## Purpose
 
 Project dedicated to TF configuration.  
 This project create GCP ressources for 3 environments (prod, dev and review):
