@@ -9,6 +9,16 @@ This project create GCP ressources for 3 environments (prod, dev and review):
 
 You will be able to automatically trigger a cloud build after each commit and deploy your application on Cloud Run.
 
+## Prerequisites
+
+A valide GCP account with a project running.
+For each env, edit `tfvar` file to specify :
+```terraform
+project_id = "your project id"
+project_number = "your project number"
+```
+
+
 ## Create intiale ressources
 
 First, create GCP Prod env :
