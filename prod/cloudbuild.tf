@@ -10,19 +10,13 @@ resource "google_cloudbuild_trigger" "default" {
     step {
       name       = "gcr.io/google.com/cloudsdktool/cloud-sdk"
       entrypoint = "sh"
-      args = ["-c", "gcloud run deploy ${var.project_id}-${var.environment}-srv --image gcr.io/${var.project_id}/app:$(cat ../app_version) --region ${var.region} --platform managed"]
+      args = ["-c", "gcloud run deploy ${var.project_id}-${var.environment}-srv --image gcr.io/${var.project_id}/app:$(cat ../app_version) --no-traffic --region ${var.region} --platform managed"]
     }
 
     step {
       name = "ubuntu"
-      args = ["echo", "Running Gattling tests on review env... OK"]
+      args = ["echo", "Running Robot Framework tests on hidden PROD env... OK"]
     }
-	
-	step {
-      name = "ubuntu"
-      args = ["echo", "Running DAST analysis on review env... OK"]
-    }
-
   }
 }
 

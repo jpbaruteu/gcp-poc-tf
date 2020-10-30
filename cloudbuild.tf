@@ -2,7 +2,7 @@ resource "google_cloudbuild_trigger" "default" {
   name = var.environment
   trigger_template {
     branch_name = var.environment
-    repo_name   = var.git_repo
+    repo_name   = "${var.project_id}-repository"
     dir         = "app"
   }
 

@@ -13,11 +13,6 @@ variable "environment" {
   description = "Env name."
 }
 
-variable "git_repo" {
-  type = string
-  description = "Git repository."
-}
-
 variable "region" {
   type = string
   description = "The default region to deploy the resources to."

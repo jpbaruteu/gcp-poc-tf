@@ -1,25 +1,24 @@
 # gcp-poc-tf
 
 Project dedicated to TF configuration.  
-This project create GCP ressources for 2 environments (dev and review):
+This project create GCP ressources for 3 environments (prod, dev and review):
 - Cloud Run
 - Clourd Build
 - Cloud SQL
 - Service account
 
-After creating a github project `git_repo` with dev and review branches, you will be able to automatically trigger a cloud build after each commit and deploy your application on Cloud Run.
+You will be able to automatically trigger a cloud build after each commit and deploy your application on Cloud Run.
 
 ## Create intiale ressources
 
-First, create GCP generic ressources :
+First, create GCP Prod env :
 
 ```bash
 git clone https://github.com/jpbaruteu/gcp-poc-tf.git
-git checkout test_multi_env
-cd gcp-poc-tf/init
+cd fr-gcp-pov-ubaldi2-repository/prod
 terraform init
-terraform plan -var-file=init.env.tfvars
-terraform apply -var-file=init.env.tfvars
+terraform plan -var-file=prod.env.tfvars
+terraform apply -var-file=prod.env.tfvars
 ```
 
 ## Create environment ressources
@@ -27,9 +26,7 @@ terraform apply -var-file=init.env.tfvars
 For dev env :
 
 ```bash
-git clone https://github.com/jpbaruteu/gcp-poc-tf.git
-git checkout test_multi_env
-cd gcp-poc-tf/dev
+cd fr-gcp-pov-ubaldi2-repository/dev
 terraform init
 terraform plan -var-file=dev.env.tfvars
 terraform apply -var-file=dev.env.tfvars
@@ -38,9 +35,7 @@ terraform apply -var-file=dev.env.tfvars
 For review env :
 
 ```bash
-git clone https://github.com/jpbaruteu/gcp-poc-tf.git
-git checkout test_multi_env
-cd gcp-poc-tf/review
+cd fr-gcp-pov-ubaldi2-repository/review
 terraform init
 terraform plan -var-file=review.env.tfvars
 terraform apply -var-file=review.env.tfvars
