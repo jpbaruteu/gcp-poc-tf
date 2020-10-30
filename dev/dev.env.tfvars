@@ -1,7 +1,7 @@
  
-project_id = "fr-gcp-pov-ubaldi2"
+project_id = "your project id"
 
-project_number = "174493681034"
+project_number = "your project number"
 
 region = "europe-west2"
 
