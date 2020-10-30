@@ -48,7 +48,12 @@ You can get source of a test application from the following repository and deplo
 
 Each cloud build is mapped to a branch with the same name (cloud build "dev" <> branch "dev").
 
-To deploy the application, create each branches into your GCP repository created juste before. Each commit on a branch automatically trigger a build and deploy application on the corresponding environment.
+To deploy the application :
+- Create each branches (dev, review, prod) into your GCP repository created juste before
+- Push test application code on `dev` branch. This inital commit will deploy application on dev env.
+- Merge `dev` branch into `review` branch and `review` into `prod` to deploy on review and then on prod.
+
+Each commit on a branch automatically trigger a build and deploy application on the corresponding environment.
 
 ## Create a new environment
 
