@@ -3,7 +3,7 @@
 Project dedicated to TF configuration.  
 This project create GCP ressources for 3 environments (prod, dev and review):
 - Cloud Run
-- Clourd Build
+- Cloud Build
 - Cloud SQL
 - Service account
 
@@ -21,7 +21,7 @@ terraform plan -var-file=prod.env.tfvars
 terraform apply -var-file=prod.env.tfvars
 ```
 
-## Create environment ressources
+## Create specific environment ressources
 
 For dev env :
 
