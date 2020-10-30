@@ -41,6 +41,10 @@ terraform plan -var-file=review.env.tfvars
 terraform apply -var-file=review.env.tfvars
 ```
 
+## Deploy application into GCP
+
+Now, environments are created into GCP. You can get source application from the following repository and deploy it on each env : `https://github.com/jpbaruteu/gcp-poc.git`
+
 ## Create a new environment
 
 Duplicate dev directory and rename `dev.env.tfvars` into `<env>.env.tfvars`. Update the content :
