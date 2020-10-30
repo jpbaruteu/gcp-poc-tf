@@ -46,7 +46,8 @@ terraform apply -var-file=review.env.tfvars
 Now, environments are created into GCP.  
 You can get source of a test application from the following repository and deploy it on each env : `https://github.com/jpbaruteu/gcp-poc.git`
 
-Each cloud build is mapped to a branch with the same name (cloud build "dev" <> branch "dev"). To deploy the application, create each branches into your GCP repository created juste before. Each commit on a branch automatically trigger a build and deploy application on the corresponding environment.
+Each cloud build is mapped to a branch with the same name (cloud build "dev" <> branch "dev").
+To deploy the application, create each branches into your GCP repository created juste before. Each commit on a branch automatically trigger a build and deploy application on the corresponding environment.
 
 ## Create a new environment
 
