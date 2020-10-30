@@ -14,7 +14,7 @@ First, create GCP Prod env :
 
 ```bash
 git clone https://github.com/jpbaruteu/gcp-poc-tf.git
-cd fr-gcp-pov-ubaldi2-repository/prod
+cd gcp-poc-tf/prod
 terraform init
 terraform plan -var-file=prod.env.tfvars
 terraform apply -var-file=prod.env.tfvars
@@ -25,7 +25,7 @@ terraform apply -var-file=prod.env.tfvars
 For dev env :
 
 ```bash
-cd fr-gcp-pov-ubaldi2-repository/dev
+cd gcp-poc-tf/dev
 terraform init
 terraform plan -var-file=dev.env.tfvars
 terraform apply -var-file=dev.env.tfvars
@@ -34,7 +34,7 @@ terraform apply -var-file=dev.env.tfvars
 For review env :
 
 ```bash
-cd fr-gcp-pov-ubaldi2-repository/review
+cd gcp-poc-tf/review
 terraform init
 terraform plan -var-file=review.env.tfvars
 terraform apply -var-file=review.env.tfvars
@@ -66,9 +66,10 @@ Deploy <env> into GCP:
 
 ```bash
 git clone https://github.com/jpbaruteu/gcp-poc-tf.git
-git checkout test_multi_env
 cd gcp-poc-tf/<env>
 terraform init
 terraform plan -var-file=<env>.env.tfvars
 terraform apply -var-file=<env>.env.tfvars
 ```
+
+Create `<env>` branch into GCP repository.
